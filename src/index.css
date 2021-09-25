@@ -23,5 +23,5 @@ a {
 .leaflet-container {
   width: 70vw;
   height: 70vh;
-  border: 1px solid red;
+  border-radius: 8px;
 }

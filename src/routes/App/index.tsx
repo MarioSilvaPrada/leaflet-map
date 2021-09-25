@@ -1,22 +1,17 @@
-import React, { FC, useState, useEffect, useRef } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { getAllUsers } from 'api';
 import { IUser } from 'utils/interfaces';
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  useMapEvent,
-  useMap,
-} from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+
+import UserCard from 'components/UserCard';
 import * as S from './style';
-import { latLng } from 'leaflet';
 
 interface IPos {
   lat: number;
   lng: number;
 }
 
-const FlyComponent = (props): null => {
+const FlyComponent = (props: { lat: number; lng: number }): null => {
   const { lat, lng } = props;
   const map = useMap();
   if (lat) {
@@ -27,8 +22,7 @@ const FlyComponent = (props): null => {
   return null;
 };
 
-const App: FC = (props) => {
-  const mapRef = useRef();
+const App: FC = () => {
   const [mapUsers, setMapUsers] = useState<IUser[]>([]);
 
   const [userPosition, setUserPosition] = useState<IPos>({
@@ -58,29 +52,18 @@ const App: FC = (props) => {
 
   return (
     <S.Container>
-      <h1>Home</h1>
       <S.CardsWrapper>
         {mapUsers.map((user: IUser) => (
-          <S.UserCard
+          <UserCard
             key={user.id}
+            user={user}
             onClick={() =>
               onCardClick(user.address.geo.lat, user.address.geo.lng)
             }
-          >
-            <p>{user.username}</p>
-            <p>{user.address.city}</p>
-            <p>{user.address.street}</p>
-            <p>{user.address.geo.lat}</p>
-            <p>{user.address.geo.lng}</p>
-          </S.UserCard>
+          />
         ))}
       </S.CardsWrapper>
-      <MapContainer
-        ref={mapRef}
-        center={[51.505, -0.09]}
-        zoom={13}
-        scrollWheelZoom={true}
-      >
+      <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

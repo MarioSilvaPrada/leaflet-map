@@ -2,20 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
+  background: ${({ theme }) => theme.colors.main};
+  display: flex;
+  align-items: center;
 `;
 
 export const Title = styled.div`
   color: red;
 `;
 
-export const UserCard = styled.div`
-  border: 1px solid red;
-  cursor: pointer;
-  padding: 5px;
-  margin: 5px;
-`;
-
 export const CardsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-right: 5rem;
 `;
