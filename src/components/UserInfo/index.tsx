@@ -9,7 +9,10 @@ interface IProps {
 const UserInfo: FC<IProps> = ({ user }) => {
   return (
     <S.Container>
-      <h1>{user?.username}</h1>
+      <p>{user?.username}</p>
+      <p>{user?.email}</p>
+      <p>{user?.address.street}</p>
+      <p>{user?.address.suite}</p>
     </S.Container>
   );
 };
