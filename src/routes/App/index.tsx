@@ -1,9 +1,10 @@
 import React, { FC, useState, useEffect } from 'react';
 import { getAllUsers } from 'api';
 import { IUser } from 'utils/interfaces';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 
 import UserCard from 'components/UserCard';
+import UserInfo from 'components/UserInfo';
+import Map from 'components/Map';
 import * as S from './style';
 
 interface IPos {
@@ -11,20 +12,9 @@ interface IPos {
   lng: number;
 }
 
-const FlyComponent = (props: { lat: number; lng: number }): null => {
-  const { lat, lng } = props;
-  const map = useMap();
-  if (lat) {
-    map.flyTo([lat, lng], 14, {
-      duration: 5,
-    });
-  }
-  return null;
-};
-
 const App: FC = () => {
   const [mapUsers, setMapUsers] = useState<IUser[]>([]);
-
+  const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
   const [userPosition, setUserPosition] = useState<IPos>({
     lat: 51.505,
     lng: -0.09,
@@ -43,34 +33,35 @@ const App: FC = () => {
 
   useEffect(() => {}, [userPosition]);
 
-  const onCardClick = (lat: String, lng: string) => {
+  const onCardClick = (user: IUser) => {
+    const { lat, lng } = user.address.geo;
     setUserPosition({
       lat: Number(lat),
       lng: Number(lng),
     });
+
+    setSelectedUser(user);
   };
 
   return (
     <S.Container>
-      <S.CardsWrapper>
-        {mapUsers.map((user: IUser) => (
-          <UserCard
-            key={user.id}
-            user={user}
-            onClick={() =>
-              onCardClick(user.address.geo.lat, user.address.geo.lng)
-            }
-          />
-        ))}
-      </S.CardsWrapper>
-      <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[userPosition.lat, userPosition.lng]} />
-        <FlyComponent lat={userPosition.lat} lng={userPosition.lng} />
-      </MapContainer>
+      <S.RightContainer>
+        <S.Title>Select a user</S.Title>
+        <S.CardsWrapper>
+          {mapUsers.map((user: IUser) => (
+            <UserCard
+              key={user.id}
+              isSelected={user.id === selectedUser?.id}
+              user={user}
+              onClick={() => onCardClick(user)}
+            />
+          ))}
+        </S.CardsWrapper>
+      </S.RightContainer>
+      <S.LeftContainer>
+        <UserInfo user={selectedUser} />
+        <Map lat={userPosition.lat} lng={userPosition.lng} />
+      </S.LeftContainer>
     </S.Container>
   );
 };
