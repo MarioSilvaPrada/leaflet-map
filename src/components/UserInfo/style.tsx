@@ -8,3 +8,21 @@ export const Container = styled.div`
   height: 60%;
   border-radius: 8px;
 `;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-bottom: 1.4rem;
+`;
+
+export const InfoText = styled.p`
+  margin-left: 1.2rem;
+`;
+
+export const CenterContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+`;

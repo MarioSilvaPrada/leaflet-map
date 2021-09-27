@@ -23,8 +23,10 @@ export const LeftContainer = styled.div`
 
 export const CardsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   grid-gap: 0.5rem;
+  max-height: 40rem;
+  overflow-y: scroll;
 `;
 
 export const RightContainer = styled.div`

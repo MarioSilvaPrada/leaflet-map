@@ -11,7 +11,7 @@ const FlyComponent = (props: { lat: number; lng: number }): null => {
   const map = useMap();
   if (lat) {
     map.flyTo([lat, lng], 14, {
-      duration: 5,
+      duration: 3,
     });
   }
   return null;

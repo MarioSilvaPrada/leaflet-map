@@ -34,7 +34,7 @@ const App: FC = () => {
   return (
     <S.Container>
       <S.LeftContainer>
-        <S.Title>Select a user</S.Title>
+        <S.Title>Current users:</S.Title>
         <S.CardsWrapper>
           {mapUsers.map((user: IUser) => (
             <UserCard
