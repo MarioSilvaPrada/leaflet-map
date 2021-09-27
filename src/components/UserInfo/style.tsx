@@ -2,11 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: white;
-  padding: 3rem;∆
+  padding: 3rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
   height: 60%;
-  border-radius: 8px;
+
+  @media (max-width: 750px) {
+    padding: 1rem;
+    overflow-y: scroll;
+  }
 `;
 
 export const Row = styled.div`

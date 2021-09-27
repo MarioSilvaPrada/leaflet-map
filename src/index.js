@@ -9,10 +9,7 @@ import { ThemeProvider } from 'styled-components';
 import App from './routes/App';
 import theme from './theme/theme';
 // Pages
-import Page1 from './routes/Page1';
 import PageNotFound from './routes/PageNotFound';
-
-// Components
 
 const rootElement = document.getElementById('root');
 const root = (
@@ -20,7 +17,6 @@ const root = (
     <Router>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/1" component={Page1} />
         <Route path="*" component={PageNotFound} />
       </Switch>
     </Router>

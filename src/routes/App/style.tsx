@@ -23,6 +23,11 @@ export const LeftContainer = styled.div`
   padding: 3rem;
   padding-right: 1.5rem;
   width: 40%;
+  @media (max-width: 750px) {
+    width: 100%;
+    padding: 2rem 1rem 0.5rem;
+    height: 40%;
+  }
 `;
 
 export const CardsWrapper = styled.div`
@@ -42,6 +47,11 @@ export const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 750px) {
+    width: 100%;
+    height: 60%;
+  }
 `;
 
 export const MapWrapper = styled.div`
