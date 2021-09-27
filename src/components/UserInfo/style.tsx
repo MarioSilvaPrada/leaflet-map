@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Row = styled.div`
   display: flex;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin-bottom: 1.4rem;
 `;
 
@@ -23,6 +23,6 @@ export const InfoText = styled.p`
 export const CenterContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100%;
+  margin-top: 2rem;
 `;

@@ -25,3 +25,21 @@ a {
   height: 100%;
   border-radius: 8px;
 }
+
+@media screen and (max-width: 1400px) {
+  html {
+    font-size: 85%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 65%;
+  }
+}

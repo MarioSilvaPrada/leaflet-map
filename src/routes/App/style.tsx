@@ -5,6 +5,10 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.main};
   display: flex;
   align-items: center;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled.h2`

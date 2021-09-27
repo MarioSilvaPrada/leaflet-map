@@ -7,6 +7,8 @@ import {
   AiOutlineMail,
   AiOutlineHome,
   AiOutlinePhone,
+  AiOutlineGlobal,
+  AiTwotoneHome,
 } from 'react-icons/ai';
 
 interface IProps {
@@ -32,6 +34,14 @@ const UserInfo: FC<IProps> = ({ user }) => {
             <S.Row>
               <AiOutlinePhone />
               <S.InfoText>{user.phone}</S.InfoText>
+            </S.Row>
+            <S.Row>
+              <AiOutlineGlobal />
+              <S.InfoText>{user.website}</S.InfoText>
+            </S.Row>
+            <S.Row>
+              <AiTwotoneHome />
+              <S.InfoText>Company: {user.company.name}</S.InfoText>
             </S.Row>
             <S.Row>
               <AiOutlineHome />
