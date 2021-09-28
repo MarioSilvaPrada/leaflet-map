@@ -35,7 +35,7 @@ export const CardsWrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   grid-gap: 0.5rem;
   max-height: 40rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 export const RightContainer = styled.div`
